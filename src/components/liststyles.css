@@ -1,0 +1,44 @@
+.list{
+    color:black;
+    width: 340px;
+    margin: 20px auto;
+    height: 40px;
+    background-color:white;
+    border-radius: 5px;
+    margin-left: -4px;
+}
+.list p{
+    padding: 10px;
+    position: relative;
+    transition: ease-in-out;
+    font-size: 15px;
+    font-weight: 200;
+}
+.list p input{
+    background-color: transparent;
+    border: 0;
+    color:black;
+    
+    align-content: center;
+    display:flex;
+}
+.list p input:focus{
+    outline: none;
+}
+
+.list p span{
+    position: absolute;
+    right: 10px;
+}
+
+
+
+ .trash{
+    background-color: transparent;
+    margin-left: 200px;
+   
+ }
+  
+ .trash:hover{
+     background-color: transparent;
+ }
