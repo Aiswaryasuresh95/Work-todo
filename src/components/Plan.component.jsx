@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItems from './listitemcomponent'
+import ListItems from './Listitem.component'
 
 
 
@@ -9,6 +9,7 @@ class Plan extends Component{
         this.state=
         {
            item:[],
+           completed:false,
            currentitem:{
                text:'',
                key:''
@@ -53,7 +54,28 @@ class Plan extends Component{
          })
      }
      
+     CheckComplete=(key)=>{
+        
+         this.state.item.forEach(it =>{
+             if(it.key===key){
+                 this.setState(prevState=>{
+                     return{
+                         completed:!prevState.completed
+                     }
+                 },
+                 ()=>
+                   {
+                  console.log(this.state.completed);
+                }
+                 
+                 )
 
+                 
+             }
+             
+         });
+         
+     }
 
 
 
@@ -76,7 +98,7 @@ class Plan extends Component{
                     </form>
                   
                   
-                  <ListItems items={this.state.item} deleteItem={this.deleteItem} />
+                  <ListItems items={this.state.item} deleteItem={this.deleteItem} completed={this.state.completed} CheckComplete={this.CheckComplete}/>
                   
                 </header>
             </div>

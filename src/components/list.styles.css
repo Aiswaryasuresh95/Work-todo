@@ -1,19 +1,20 @@
+li{
+   list-style-type:none;
+}
+
+
+
 .list{
     color:black;
-    width: 340px;
+    width: 500px;
     margin: 20px auto;
     height: 40px;
     background-color:white;
     border-radius: 5px;
     margin-left: -4px;
-}
-.list p{
-    padding: 10px;
     position: relative;
-    transition: ease-in-out;
-    font-size: 15px;
-    font-weight: 200;
 }
+
 .list p input{
     background-color: transparent;
     border: 0;
@@ -30,15 +31,21 @@
     position: absolute;
     right: 10px;
 }
-
-
-
- .trash{
+ .list .trash{
     background-color: transparent;
-    margin-left: 200px;
-   
+    right: 0;
+    position:absolute;
+    margin-top: 10px;
  }
   
  .trash:hover{
      background-color: transparent;
+ }
+ 
+ .list input{
+     margin-top: 8px;
+ }
+
+ .completed input[type="text"]{
+     text-decoration: line-through;
  }
