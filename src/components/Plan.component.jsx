@@ -32,7 +32,7 @@ class Plan extends Component{
        if(newitem.text!=="")
        {
            const items = [...this.state.item,newitem]
-           this.setState({
+           this.setState    ({
                item : items,
                currentitem : {
                    text:'',
@@ -54,7 +54,7 @@ class Plan extends Component{
          })
      }
      
-     CheckComplete=(key)=>{
+    CheckComplete=(key)=>{
         
          this.state.item.forEach(it =>{
              if(it.key===key){
@@ -82,8 +82,9 @@ class Plan extends Component{
 
     render(){
         return(
-            <div className="Main">
-                <header>
+            <section>
+              <div className="Main">
+                 <header>
                     <h1>Let's plan your day</h1>
                     <form onSubmit={this.addItem}>
                         <input 
@@ -94,14 +95,16 @@ class Plan extends Component{
                         onChange={this.handleChange}
                          />
 
-                        <button type="submit">ADD</button>
+                        
                     </form>
+                    </header>
                   
                   
-                  <ListItems items={this.state.item} deleteItem={this.deleteItem} completed={this.state.completed} CheckComplete={this.CheckComplete}/>
-                  
-                </header>
+                
             </div>
+            <ListItems items={this.state.item} deleteItem={this.deleteItem} completed={this.state.completed} CheckComplete={this.CheckComplete}/>
+
+            </section>
         )
     }
 }

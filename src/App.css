@@ -6,14 +6,16 @@ body {
   scroll-behavior: smooth;
   background-size: cover;
   font-size: 10px;
+  position: relative;
   
 }
 
 .Main{
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  margin-top: 100px;
+ display: flex;
+ justify-content: center;
+ margin-bottom: 10em;
+ margin-top: 5em;
+
 }
 input[type=text]{
   width: 340px;

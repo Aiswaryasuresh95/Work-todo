@@ -6,16 +6,15 @@ import { Trash } from 'react-feather';
 
 function ListItems({items,deleteItem,completed,CheckComplete}){
     const item = items;
-    // const date = moment().format("DD MM YYYY");
     
     const listitems = item.map( list =>{
           
         return(
-            <div key={list.key} className={completed?'list completed':'list'} >
+            <div key={list.key} className='list' >
                
-                  {completed? <input type="checkbox" Checked={`${completed}`} onClick={(e)=>CheckComplete(list.key,e.target.value)}/>
+                  {completed? <input type="checkbox" Checked={`${completed}`} onClick={()=>CheckComplete(list.key)}/>
                   :
-                 <input type="checkbox"  onClick={()=>CheckComplete(list.key)}/>}
+                 <input type="checkbox" Checked={`${completed}`} onClick={()=>CheckComplete(list.key)}/>}
 
        
 
