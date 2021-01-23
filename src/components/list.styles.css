@@ -45,6 +45,7 @@ li{
      margin-top: 8px;
  }
 
- .completed input[type="text"]{
-     text-decoration: line-through;
- }
+ .completed{
+    text-decoration: line-through;
+  }
+  

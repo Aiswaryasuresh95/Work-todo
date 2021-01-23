@@ -4,42 +4,32 @@ import './list.styles.css';
 import { Trash } from 'react-feather';
 
 
-function ListItems({items,deleteItem,completed,CheckComplete}){
-    const item = items;
+function ListItems({todos,deleteItem,completed,checkCompleted}){
+
+    // const checkCompleted=(index)=>{
+
+
+    // }
+
     
-    const listitems = item.map( list =>{
+    const listitems = todos.map( (item,index) =>{
           
         return(
-            <div key={list.key} className='list' >
+            <div key={item.id} className='list' >
                
-                  {completed? <input type="checkbox" Checked={`${completed}`} onClick={()=>CheckComplete(list.key)}/>
-                  :
-                 <input type="checkbox" Checked={`${completed}`} onClick={()=>CheckComplete(list.key)}/>}
+                  <input type="checkbox" checked={completed} onClick={()=>checkCompleted(item.id)} />
 
-       
+                    <input type="text" id={item.id}   defaultValue={item.currentitem} className={completed?'completed':''} /> 
+                            <span>
+                                  <button className="trash">
+                                       <Trash  size="13" color="#ccb9bc" onClick={()=>deleteItem(item.id)}/>
+                                 </button>
+                           </span>
+            </div>)});
 
-                    <input type="text" id={item.key}  defaultValue={list.text} /> 
-                <span>
-                    <button className="trash">
-                          <Trash  size="13" color="#ccb9bc" onClick={()=>deleteItem(list.key)}/>
-                    </button>
-                 </span>
-                
-            
-
-            </div>
-        )
-
-
-    }
-        )
-    return(
-        <div className="todo-list">
-           
-          {listitems}  
-        </div>
-    )
-
-}
+         return(
+            <div className="todo-list">
+                {listitems}  
+        </div>)}
  
 export default ListItems;

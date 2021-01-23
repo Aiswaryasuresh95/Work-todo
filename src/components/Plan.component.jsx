@@ -1,111 +1,71 @@
-import React, { Component } from 'react';
+import React,{useState} from 'react';
 import ListItems from './Listitem.component'
+import {v4 as uuidv4} from "uuid";
 
 
+const Plan =() =>{
+   
+    const [todos, settodos] = useState([]);
+    const [currentitem,setCurrentItem]=useState('');
+    const [completed, setcompleted] = useState(truegy4gt);
 
-class Plan extends Component{
-    constructor(){
-        super();
-        this.state=
-        {
-           item:[],
-           completed:false,
-           currentitem:{
-               text:'',
-               key:''
-           }
-        };
-    }
 
-    handleChange=(event)=> {
-        this.setState({currentitem:{
-            text:event.target.value,
-            key:Date.now()
-           
-        }});
+   const handleChange=(event)=> {
+       setCurrentItem(event.target.value);
       }
 
-   addItem=(event)=>{
+   const  handleSubmit=(event)=>{
        event.preventDefault();
-       const newitem=this.state.currentitem;
-      
-       if(newitem.text!=="")
-       {
-           const items = [...this.state.item,newitem]
-           this.setState    ({
-               item : items,
-               currentitem : {
-                   text:'',
-                   key:''
-               }, 
-           },
-           ()=>
-           {
-            console.log(this.state.item);
-           })
-          }
+       if(currentitem!==""){
+        const item={id:uuidv4(),currentitem};
+        settodos([...todos,item]);
+        setCurrentItem('');
+        console.log(todos);
+       }
+     
        }
      
 
-     deleteItem=(key)=>{
-         const flitereditems = this.state.item.filter(del => del.key!==key)
-         this.setState({
-             item:flitereditems
+     const deleteItem=(id)=>{
+         const flitereditems =todos.filter(del=>del.id!==id);
+        settodos([...flitereditems]);
+     }
+
+     const checkCompleted=(id)=>{
+         todos.forEach(item=>{
+             if(item.id!==id){
+                 setcompleted(!completed);
+                 console.log(completed);
+             }
          })
      }
-     
-    CheckComplete=(key)=>{
         
-         this.state.item.forEach(it =>{
-             if(it.key===key){
-                 this.setState(prevState=>{
-                     return{
-                         completed:!prevState.completed
-                     }
-                 },
-                 ()=>
-                   {
-                  console.log(this.state.completed);
-                }
-                 
-                 )
 
-                 
-             }
-             
-         });
-         
-     }
-
-
-
-
-    render(){
         return(
             <section>
               <div className="Main">
                  <header>
                     <h1>Let's plan your day</h1>
-                    <form onSubmit={this.addItem}>
+                    <form onSubmit={handleSubmit}>
                         <input 
                         type="text" 
                         name="items"
-                        value={this.state.currentitem.text}
+                        value={currentitem}
                         placeholder="Enter Your Work"
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                          />
 
                         
-                    </form>
+                      </form>
                     </header>
                   
                   
                 
             </div>
-            <ListItems items={this.state.item} deleteItem={this.deleteItem} completed={this.state.completed} CheckComplete={this.CheckComplete}/>
+            <ListItems todos={todos} deleteItem={deleteItem} completed={completed} checkCompleted={checkCompleted}/>
 
             </section>
         )
     }
-}
+
 export default Plan;
