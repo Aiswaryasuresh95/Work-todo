@@ -7,7 +7,7 @@ const Plan =() =>{
    
     const [todos, settodos] = useState([]);
     const [currentitem,setCurrentItem]=useState('');
-    const [completed, setcompleted] = useState(truegy4gt);
+    const [completed, setcompleted] = useState(false);
 
 
    const handleChange=(event)=> {
@@ -33,7 +33,7 @@ const Plan =() =>{
 
      const checkCompleted=(id)=>{
          todos.forEach(item=>{
-             if(item.id!==id){
+             if(item.id===id){
                  setcompleted(!completed);
                  console.log(completed);
              }

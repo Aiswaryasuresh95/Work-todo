@@ -19,7 +19,7 @@ function ListItems({todos,deleteItem,completed,checkCompleted}){
                
                   <input type="checkbox" checked={completed} onClick={()=>checkCompleted(item.id)} />
 
-                    <input type="text" id={item.id}   defaultValue={item.currentitem} className={completed?'completed':''} /> 
+                    <input type="text" id={item.id}   defaultValue={item.currentitem} className={completed?'completed':''}/> 
                             <span>
                                   <button className="trash">
                                        <Trash  size="13" color="#ccb9bc" onClick={()=>deleteItem(item.id)}/>
