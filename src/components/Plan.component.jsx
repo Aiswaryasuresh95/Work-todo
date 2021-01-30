@@ -7,7 +7,7 @@ const Plan =() =>{
    
     const [todos, settodos] = useState([]);
     const [currentitem,setCurrentItem]=useState('');
-    const [completed, setcompleted] = useState(false);
+    
 
 
    const handleChange=(event)=> {
@@ -17,7 +17,7 @@ const Plan =() =>{
    const  handleSubmit=(event)=>{
        event.preventDefault();
        if(currentitem!==""){
-        const item={id:uuidv4(),currentitem};
+        const item={id:uuidv4(),currentitem,completed:false};
         settodos([...todos,item]);
         setCurrentItem('');
         console.log(todos);
@@ -31,13 +31,20 @@ const Plan =() =>{
         settodos([...flitereditems]);
      }
 
-     const checkCompleted=(id)=>{
-         todos.forEach(item=>{
+     const checkCompleted=(id,index)=>{
+    
+         const newdata =todos.map(item=>{
+            
              if(item.id===id){
-                 setcompleted(!completed);
-                 console.log(completed);
+                 item.completed=!item.completed;
+                 console.log(item);
+                
              }
+            
+
          })
+         console.log(newdata);
+         
      }
         
 
@@ -62,7 +69,7 @@ const Plan =() =>{
                   
                 
             </div>
-            <ListItems todos={todos} deleteItem={deleteItem} completed={completed} checkCompleted={checkCompleted}/>
+            <ListItems todos={todos} deleteItem={deleteItem} checkCompleted={checkCompleted}/>
 
             </section>
         )
