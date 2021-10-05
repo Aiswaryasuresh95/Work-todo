@@ -31,22 +31,7 @@ const Plan =() =>{
         settodos([...flitereditems]);
      }
 
-     const checkCompleted=(id,index)=>{
     
-         const newdata =todos.map(item=>{
-            
-             if(item.id===id){
-                 item.completed=!item.completed;
-                 console.log(item);
-                
-             }
-            
-
-         })
-         console.log(newdata);
-         
-     }
-        
 
         return(
             <section>
@@ -69,7 +54,7 @@ const Plan =() =>{
                   
                 
             </div>
-            <ListItems todos={todos} deleteItem={deleteItem} checkCompleted={checkCompleted}/>
+            <ListItems todos={todos} deleteItem={deleteItem}/>
 
             </section>
         )
